@@ -835,11 +835,11 @@ select.form-control {
   z-index: 1000;
   padding: var(--space-16) 0;
 }
-.header .logo {
+.logo {
   width: 100%;
   text-align: center;
 }
-.header .logo img {
+.logo img {
   display: inline-block;
 }
 
