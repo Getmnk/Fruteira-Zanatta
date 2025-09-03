@@ -1,4 +1,4 @@
-// Fruteira Zanatta - Interactive functionality
+// Casa de Carnes Zanatta - Interactive functionality
 
 document.addEventListener('DOMContentLoaded', function() {
     // Navigation functionality
@@ -27,11 +27,13 @@ document.addEventListener('DOMContentLoaded', function() {
 function initNavigation() {
     const navLinks = document.querySelectorAll('.nav-link');
     const heroCta = document.querySelector('.hero-cta .btn');
+    const footerLinks = document.querySelectorAll('.footer-nav a');
     
-    // Handle navigation clicks
+    // Handle navigation clicks for header nav
     navLinks.forEach(link => {
         link.addEventListener('click', function(e) {
             e.preventDefault();
+            e.stopPropagation();
             
             const targetId = this.getAttribute('href').substring(1);
             scrollToSection(targetId);
@@ -41,11 +43,25 @@ function initNavigation() {
         });
     });
     
+    // Handle footer navigation clicks
+    footerLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            
+            const targetId = this.getAttribute('href').substring(1);
+            scrollToSection(targetId);
+        });
+    });
+    
     // Handle hero CTA button click
     if (heroCta) {
         heroCta.addEventListener('click', function(e) {
             e.preventDefault();
-            scrollToSection('carnes');
+            e.stopPropagation();
+            
+            const targetId = this.getAttribute('data-target') || 'carnes';
+            scrollToSection(targetId);
         });
     }
     
@@ -63,32 +79,28 @@ function initNavigation() {
 }
 
 function scrollToSection(targetId) {
-    const headerHeight = document.querySelector('.header').offsetHeight || 80;
+    const headerHeight = 70; // Fixed header height
     let targetElement = null;
     let targetPosition = 0;
     
     if (targetId === 'inicio') {
         // Scroll to top for inicio
         targetPosition = 0;
-    } else if (targetId === 'carnes' || targetId === 'legumes' || targetId === 'frutas') {
-        // For product sections, scroll to the specific product card
+    } else {
+        // Find the target element
         targetElement = document.getElementById(targetId);
         if (targetElement) {
-            targetPosition = targetElement.offsetTop - headerHeight - 60;
-        }
-    } else if (targetId === 'localizacao') {
-        // For location, scroll to the location section
-        targetElement = document.getElementById('localizacao');
-        if (targetElement) {
-            targetPosition = targetElement.offsetTop - headerHeight - 20;
+            const rect = targetElement.getBoundingClientRect();
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            targetPosition = rect.top + scrollTop - headerHeight - 20;
         }
     }
     
     // Ensure we don't scroll past the document
-    const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
-    targetPosition = Math.min(targetPosition, maxScroll);
-    targetPosition = Math.max(targetPosition, 0);
+    const maxScroll = Math.max(0, document.documentElement.scrollHeight - window.innerHeight);
+    targetPosition = Math.min(Math.max(targetPosition, 0), maxScroll);
     
+    // Smooth scroll to position
     window.scrollTo({
         top: targetPosition,
         behavior: 'smooth'
@@ -98,44 +110,35 @@ function scrollToSection(targetId) {
 function updateActiveNavLink(activeLink) {
     const navLinks = document.querySelectorAll('.nav-link');
     navLinks.forEach(link => link.classList.remove('active'));
-    activeLink.classList.add('active');
+    if (activeLink) {
+        activeLink.classList.add('active');
+    }
 }
 
 function updateActiveNavOnScroll() {
     const navLinks = document.querySelectorAll('.nav-link');
-    const headerHeight = document.querySelector('.header').offsetHeight || 80;
-    const scrollPosition = window.scrollY + headerHeight + 50;
+    const headerHeight = 70;
+    const scrollPosition = window.scrollY + headerHeight + 100;
     
     let activeSection = 'inicio';
     
     // Check if we're at the very top
-    if (window.scrollY < 100) {
+    if (window.scrollY < 200) {
         activeSection = 'inicio';
     } else {
-        // Check each section based on scroll position
-        const carnesElement = document.getElementById('carnes');
-        const legumesElement = document.getElementById('legumes');
-        const frutasElement = document.getElementById('frutas');
-        const localizacaoElement = document.getElementById('localizacao');
+        // Define sections in order
+        const sections = ['carnes', 'legumes', 'frutas', 'bebidas', 'localizacao'];
         
-        if (localizacaoElement) {
-            const localizacaoTop = localizacaoElement.offsetTop;
-            if (scrollPosition >= localizacaoTop - 100) {
-                activeSection = 'localizacao';
-            } else if (frutasElement) {
-                const frutasTop = frutasElement.offsetTop;
-                if (scrollPosition >= frutasTop - 100) {
-                    activeSection = 'frutas';
-                } else if (legumesElement) {
-                    const legumesTop = legumesElement.offsetTop;
-                    if (scrollPosition >= legumesTop - 100) {
-                        activeSection = 'legumes';
-                    } else if (carnesElement) {
-                        const carnesTop = carnesElement.offsetTop;
-                        if (scrollPosition >= carnesTop - 100) {
-                            activeSection = 'carnes';
-                        }
-                    }
+        // Find the current active section
+        for (let i = sections.length - 1; i >= 0; i--) {
+            const element = document.getElementById(sections[i]);
+            if (element) {
+                const rect = element.getBoundingClientRect();
+                const elementTop = rect.top + window.scrollY;
+                
+                if (scrollPosition >= elementTop - 150) {
+                    activeSection = sections[i];
+                    break;
                 }
             }
         }
@@ -169,7 +172,7 @@ function initScrollAnimations() {
     const animatedElements = document.querySelectorAll('.product-card, .address-card');
     animatedElements.forEach((element, index) => {
         element.classList.add('fade-in');
-        element.style.transitionDelay = `${index * 0.2}s`;
+        element.style.transitionDelay = `${index * 0.15}s`;
         observer.observe(element);
     });
 }
@@ -182,6 +185,7 @@ function initMobileMenu() {
     if (mobileMenuBtn && navMenu) {
         mobileMenuBtn.addEventListener('click', function(e) {
             e.preventDefault();
+            e.stopPropagation();
             this.classList.toggle('active');
             navMenu.classList.toggle('active');
         });
@@ -214,7 +218,7 @@ function initFloatingElements() {
     // Add random animation delays and speeds
     floatingShapes.forEach((shape, index) => {
         const randomDelay = Math.random() * 20;
-        const randomDuration = 15 + Math.random() * 10;
+        const randomDuration = 18 + Math.random() * 8;
         
         shape.style.animationDelay = `-${randomDelay}s`;
         shape.style.animationDuration = `${randomDuration}s`;
@@ -238,14 +242,11 @@ function updateFloatingElements() {
     const floatingShapes = document.querySelectorAll('.floating-shape');
     
     floatingShapes.forEach((shape, index) => {
-        const speed = 0.2 + (index * 0.05);
+        const speed = 0.1 + (index * 0.03);
         const yPos = -(scrolled * speed);
-        const currentTransform = shape.style.transform || '';
         
-        // Preserve the original animation transform and add parallax
-        if (!currentTransform.includes('translate3d')) {
-            shape.style.transform += ` translate3d(0, ${yPos}px, 0)`;
-        }
+        // Apply parallax transform while preserving animation
+        shape.style.transform = `translate3d(0, ${yPos}px, 0)`;
     });
 }
 
@@ -255,7 +256,9 @@ function initProductCards() {
     
     productCards.forEach(card => {
         card.addEventListener('mouseenter', function() {
-            this.style.transform = 'translateY(-12px) scale(1.02)';
+            if (!this.style.transform.includes('scale')) {
+                this.style.transform = 'translateY(-12px) scale(1.02)';
+            }
         });
         
         card.addEventListener('mouseleave', function() {
@@ -304,12 +307,12 @@ function initHeaderScroll() {
     if (header) {
         window.addEventListener('scroll', function() {
             const scrolled = window.pageYOffset;
-            const opacity = Math.min((scrolled / 100) + 0.8, 0.98);
+            const opacity = Math.min((scrolled / 100) + 0.85, 0.98);
             
             if (scrolled > 50) {
                 header.style.background = `rgba(255, 255, 253, ${opacity})`;
                 header.style.backdropFilter = 'blur(15px)';
-                header.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.05)';
+                header.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.08)';
             } else {
                 header.style.background = 'rgba(255, 255, 253, 0.95)';
                 header.style.backdropFilter = 'blur(10px)';
@@ -317,22 +320,6 @@ function initHeaderScroll() {
             }
         });
     }
-}
-
-// Debug function to log element positions (can be removed in production)
-function debugElementPositions() {
-    console.log('=== Element Positions Debug ===');
-    const elements = ['carnes', 'legumes', 'frutas', 'localizacao'];
-    elements.forEach(id => {
-        const element = document.getElementById(id);
-        if (element) {
-            console.log(`${id}: offsetTop = ${element.offsetTop}`);
-        } else {
-            console.log(`${id}: Element not found`);
-        }
-    });
-    console.log(`Window scrollY: ${window.scrollY}`);
-    console.log(`Header height: ${document.querySelector('.header').offsetHeight}`);
 }
 
 // Add keyboard navigation support
@@ -358,6 +345,10 @@ function initKeyboardNavigation() {
                     scrollToSection('frutas');
                     break;
                 case 'Digit5':
+                    e.preventDefault();
+                    scrollToSection('bebidas');
+                    break;
+                case 'Digit6':
                     e.preventDefault();
                     scrollToSection('localizacao');
                     break;

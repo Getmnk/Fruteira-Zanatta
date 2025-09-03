@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fruteira Zanatta - Frescor que você pode sentir</title>
+    <title>Casa de Carnes Zanatta - Frescor que você pode sentir</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -22,13 +22,14 @@
         <div class="container">
             <nav class="nav">
                 <div class="logo">
-                    <h1>Fruteira Zanatta</h1>
+                    <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCABkAJYDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD3+iiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigD/9k=" alt="Casa de Carnes Zanatta" class="logo-img">
                 </div>
                 <ul class="nav-menu">
                     <li><a href="#inicio" class="nav-link active">Início</a></li>
                     <li><a href="#carnes" class="nav-link">Carnes</a></li>
                     <li><a href="#legumes" class="nav-link">Legumes</a></li>
                     <li><a href="#frutas" class="nav-link">Frutas</a></li>
+                    <li><a href="#bebidas" class="nav-link">Bebidas</a></li>
                     <li><a href="#localizacao" class="nav-link">Localização</a></li>
                 </ul>
                 <button class="mobile-menu-btn" aria-label="Menu">
@@ -44,10 +45,10 @@
     <section id="inicio" class="hero">
         <div class="container">
             <div class="hero-content">
-                <h1 class="hero-title">Fruteira Zanatta</h1>
+                <h1 class="hero-title">Casa de Carnes Zanatta</h1>
                 <p class="hero-subtitle">Frescor que você pode sentir</p>
                 <div class="hero-cta">
-                    <a href="#carnes" class="btn btn--primary">Conheça nossos produtos</a>
+                    <button class="btn btn--primary" data-target="carnes">Conheça nossos produtos</button>
                 </div>
             </div>
         </div>
@@ -83,6 +84,15 @@
                         Frutas maduras na medida certa, suculentas e aromáticas. Cada fruta é escolhida com carinho, garantindo doçura natural, vitaminas preservadas e aquele sabor irresistível que só o frescor verdadeiro proporciona.
                     </p>
                 </article>
+
+                <!-- Bebidas -->
+                <article id="bebidas" class="product-card floating-card">
+                    <div class="product-icon">🥤</div>
+                    <h3 class="product-title">Bebidas Geladas</h3>
+                    <p class="product-description">
+                        Refrigerantes, cervejas, vinhos, água mineral e uma variedade completa de bebidas sempre geladas e prontas para refrescar. Qualidade e frescor que complementam perfeitamente sua refeição e momentos especiais.
+                    </p>
+                </article>
             </div>
         </div>
     </section>
@@ -110,7 +120,7 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-brand">
-                    <h3>Fruteira Zanatta</h3>
+                    <h3>Casa de Carnes Zanatta</h3>
                     <p>R. Abaeté, 27 - Sarandi, Porto Alegre - RS, 91130-490</p>
                 </div>
                 <nav class="footer-nav">
@@ -119,6 +129,7 @@
                         <li><a href="#carnes">Carnes</a></li>
                         <li><a href="#legumes">Legumes</a></li>
                         <li><a href="#frutas">Frutas</a></li>
+                        <li><a href="#bebidas">Bebidas</a></li>
                         <li><a href="#localizacao">Localização</a></li>
                     </ul>
                 </nav>
