@@ -835,13 +835,16 @@ select.form-control {
   z-index: 1000;
   padding: var(--space-16) 0;
 }
-.logo {
+.header .logo {
   width: 100%;
   text-align: center;
+  margin-bottom: 8px;
 }
-.logo img {
+.header .logo img {
   display: inline-block;
+  height: 40px; 
 }
+
 
 .nav {
   display: flex;
