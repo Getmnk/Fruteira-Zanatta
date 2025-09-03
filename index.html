@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fruteira Zanatta - Frescor que você pode sentir</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Floating Elements Background -->
+    <div class="floating-elements">
+        <div class="floating-shape shape-1"></div>
+        <div class="floating-shape shape-2"></div>
+        <div class="floating-shape shape-3"></div>
+        <div class="floating-shape shape-4"></div>
+        <div class="floating-shape shape-5"></div>
+        <div class="floating-shape shape-6"></div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <div class="logo">
+                    <h1>Fruteira Zanatta</h1>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="#inicio" class="nav-link active">Início</a></li>
+                    <li><a href="#carnes" class="nav-link">Carnes</a></li>
+                    <li><a href="#legumes" class="nav-link">Legumes</a></li>
+                    <li><a href="#frutas" class="nav-link">Frutas</a></li>
+                    <li><a href="#localizacao" class="nav-link">Localização</a></li>
+                </ul>
+                <button class="mobile-menu-btn" aria-label="Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">Fruteira Zanatta</h1>
+                <p class="hero-subtitle">Frescor que você pode sentir</p>
+                <div class="hero-cta">
+                    <a href="#carnes" class="btn btn--primary">Conheça nossos produtos</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products">
+        <div class="container">
+            <div class="products-grid">
+                <!-- Carnes -->
+                <article id="carnes" class="product-card floating-card">
+                    <div class="product-icon">🥩</div>
+                    <h3 class="product-title">Carnes Premium</h3>
+                    <p class="product-description">
+                        Carnes selecionadas com o máximo frescor. Cada corte é cuidadosamente escolhido para garantir maciez, sabor intenso e qualidade superior. O aroma fresco e a textura perfeita fazem toda a diferença na sua mesa.
+                    </p>
+                </article>
+
+                <!-- Legumes -->
+                <article id="legumes" class="product-card floating-card">
+                    <div class="product-icon">🥕</div>
+                    <h3 class="product-title">Legumes da Horta</h3>
+                    <p class="product-description">
+                        Legumes colhidos no ponto ideal de maturação. Cores vibrantes, texturas crocantes e sabores autênticos que trazem toda a vitalidade da natureza direto para sua cozinha. Frescor que se vê e se sente.
+                    </p>
+                </article>
+
+                <!-- Frutas -->
+                <article id="frutas" class="product-card floating-card">
+                    <div class="product-icon">🍎</div>
+                    <h3 class="product-title">Frutas Selecionadas</h3>
+                    <p class="product-description">
+                        Frutas maduras na medida certa, suculentas e aromáticas. Cada fruta é escolhida com carinho, garantindo doçura natural, vitaminas preservadas e aquele sabor irresistível que só o frescor verdadeiro proporciona.
+                    </p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Location Section -->
+    <section id="localizacao" class="location">
+        <div class="container">
+            <div class="location-content">
+                <h2 class="location-title">Nos Encontre</h2>
+                <div class="location-info">
+                    <div class="address-card floating-card">
+                        <div class="location-icon">📍</div>
+                        <p class="address">R. Abaeté, 27 - Sarandi<br>Porto Alegre - RS<br>91130-490</p>
+                    </div>
+                    <div class="map-placeholder">
+                        <div class="map-visual"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3>Fruteira Zanatta</h3>
+                    <p>R. Abaeté, 27 - Sarandi, Porto Alegre - RS, 91130-490</p>
+                </div>
+                <nav class="footer-nav">
+                    <ul>
+                        <li><a href="#inicio">Início</a></li>
+                        <li><a href="#carnes">Carnes</a></li>
+                        <li><a href="#legumes">Legumes</a></li>
+                        <li><a href="#frutas">Frutas</a></li>
+                        <li><a href="#localizacao">Localização</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
