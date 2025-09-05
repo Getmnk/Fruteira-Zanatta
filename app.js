@@ -40,123 +40,27 @@ function initNavigation() {
             updateActiveNavLink(this);
         });
     });
-    // Função para adicionar imagens de promoções dinamicamente - ATUALIZADA
-function adicionarPromocoes(imagensPaths) {
-    const promotionsGrid = document.getElementById('promotions-grid');
-
-    // Limpar o conteúdo atual
-    promotionsGrid.innerHTML = '';
-
-    // Adicionar cada imagem de promoção
-    imagensPaths.forEach((imagePath, index) => {
-        const promotionDiv = document.createElement('div');
-        promotionDiv.className = 'promotion-image fade-in';
-        promotionDiv.style.transitionDelay = `${index * 0.2}s`;
-
-        const img = document.createElement('img');
-        img.src = imagePath;
-        img.alt = `Promoção ${index + 1}`;
-        img.loading = 'lazy';
-
-        promotionDiv.appendChild(img);
-        promotionsGrid.appendChild(promotionDiv);
-    });
-
-    // Re-inicializar as animações de scroll para os novos elementos
-    const observer = new IntersectionObserver(function(entries) {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-            }
+    
+    // Handle hero CTA button click
+    if (heroCta) {
+        heroCta.addEventListener('click', function(e) {
+            e.preventDefault();
+            scrollToSection('carnes');
         });
-    }, {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    });
-
-    // Observar os novos elementos de promoção
-    document.querySelectorAll('.promotion-image').forEach(element => {
-        observer.observe(element);
-    });
-}
-
-// Carregar automaticamente as novas promoções quando a página carregar
-document.addEventListener('DOMContentLoaded', function() {
-    // Novas imagens das promoções da Fruteira Zanatta
-    const promocoesAtuais = [
-        '1000231560.jpeg',
-        '1000231559.jpeg', 
-        '1000231558.jpeg',
-        '1000231556.jpeg'
-    ];
-
-    // Carregar as promoções automaticamente
-    setTimeout(() => {
-        adicionarPromocoes(promocoesAtuais);
-    }, 1000); // Pequeno delay para garantir que a página carregou
-});
-
-// Função para adicionar imagens de promoções dinamicamente - ATUALIZADA
-function adicionarPromocoes(imagensPaths) {
-    const promotionsGrid = document.getElementById('promotions-grid');
-
-    // Limpar o conteúdo atual
-    promotionsGrid.innerHTML = '';
-
-    // Adicionar cada imagem de promoção
-    imagensPaths.forEach((imagePath, index) => {
-        const promotionDiv = document.createElement('div');
-        promotionDiv.className = 'promotion-image fade-in';
-        promotionDiv.style.transitionDelay = `${index * 0.2}s`;
-
-        const img = document.createElement('img');
-        img.src = imagePath;
-        img.alt = `Promoção ${index + 1}`;
-        img.loading = 'lazy';
-
-        promotionDiv.appendChild(img);
-        promotionsGrid.appendChild(promotionDiv);
-    });
-
-    // Re-inicializar as animações de scroll para os novos elementos
-    const observer = new IntersectionObserver(function(entries) {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-            }
-        });
-    }, {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    });
-
-    // Observar os novos elementos de promoção
-    document.querySelectorAll('.promotion-image').forEach(element => {
-        observer.observe(element);
+    }
+    
+    // Handle scroll to update active navigation
+    let ticking = false;
+    window.addEventListener('scroll', function() {
+        if (!ticking) {
+            requestAnimationFrame(function() {
+                updateActiveNavOnScroll();
+                ticking = false;
+            });
+            ticking = true;
+        }
     });
 }
-
-// Carregar automaticamente as novas promoções quando a página carregar
-document.addEventListener('DOMContentLoaded', function() {
-    // Novas imagens das promoções da Fruteira Zanatta
-    const promocoesAtuais = [
-        '1000231560.jpeg',
-        '1000231559.jpeg', 
-        '1000231558.jpeg',
-        '1000231556.jpeg'
-    ];
-
-    // Carregar as promoções automaticamente
-    setTimeout(() => {
-        adicionarPromocoes(promocoesAtuais);
-    }, 1000); // Pequeno delay para garantir que a página carregou
-});
-
-// Função para atualizar promoções (para uso futuro)
-function atualizarPromocoes(novasImagens) {
-    adicionarPromocoes(novasImagens);
-}
-
 
 function scrollToSection(targetId) {
     const headerHeight = document.querySelector('.header').offsetHeight || 80;
