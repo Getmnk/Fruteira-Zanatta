@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fruteira Zanatta - Frescor que você pode sentir</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style_modificado.css">
 </head>
 <body>
     <!-- Floating Elements Background -->
@@ -27,10 +27,11 @@
       <h1>Fruteira Zanatta</h1>
         <ul class="nav-menu">
             <li><a href="#inicio" class="nav-link active">Início</a></li>
-                    <li><a href="#carnes" class="nav-link">Carnes</a></li>
-                    <li><a href="#legumes" class="nav-link">Legumes</a></li>
-                    <li><a href="#frutas" class="nav-link">Frutas</a></li>
-                    <li><a href="#localizacao" class="nav-link">Localização</a></li>
+            <li><a href="#promocoes" class="nav-link">Promoções</a></li>
+            <li><a href="#carnes" class="nav-link">Carnes</a></li>
+            <li><a href="#legumes" class="nav-link">Legumes</a></li>
+            <li><a href="#frutas" class="nav-link">Frutas</a></li>
+            <li><a href="#localizacao" class="nav-link">Localização</a></li>
     </ul>
         <button class="mobile-menu-btn" aria-label="Menu">
                     <span></span>
@@ -40,8 +41,6 @@
     </nav>
   </div>
     </header>
-    
-        
 
     <!-- Hero Section -->
     <section id="inicio" class="hero">
@@ -50,7 +49,32 @@
                 <h1 class="hero-title">Fruteira Zanatta</h1>
                 <p class="hero-subtitle">Frescor que você pode sentir</p>
                 <div class="hero-cta">
-                    <a href="#carnes" class="btn btn--primary">Conheça nossos produtos</a>
+                    <a href="#promocoes" class="btn btn--primary">Veja nossas promoções</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Promotions Section -->
+    <section id="promocoes" class="promotions">
+        <div class="container">
+            <div class="promotions-content">
+                <h2 class="promotions-title">🔥 Promoções da Semana</h2>
+                <p class="promotions-subtitle">Aproveite nossas ofertas imperdíveis!</p>
+                <div class="promotions-grid" id="promotions-grid">
+                    <!-- Novas imagens das promoções -->
+                    <div class="promotion-image fade-in" style="transition-delay: 0s;">
+                        <img src="1000231560.jpeg" alt="Promoções de Carnes - Agulha S/Osso, Peito Bovino, Ripa, Fraldinha" loading="lazy">
+                    </div>
+                    <div class="promotion-image fade-in" style="transition-delay: 0.2s;">
+                        <img src="1000231559.jpeg" alt="Promoções de Carnes - Chuleta Bovina, Músculo Bovino, Alcatra, Costela Bovina" loading="lazy">
+                    </div>
+                    <div class="promotion-image fade-in" style="transition-delay: 0.4s;">
+                        <img src="1000231558.jpeg" alt="Promoções de Carnes - Maminha, Contra Filé, Paleta Bovina, Picanha" loading="lazy">
+                    </div>
+                    <div class="promotion-image fade-in" style="transition-delay: 0.6s;">
+                        <img src="1000231556.jpeg" alt="Promoções de Carnes - Vazio, Filé Mignon, Entrecot, Costela Bovina" loading="lazy">
+                    </div>
                 </div>
             </div>
         </div>
@@ -127,6 +151,7 @@
                 <nav class="footer-nav">
                     <ul>
                         <li><a href="#inicio">Início</a></li>
+                        <li><a href="#promocoes">Promoções</a></li>
                         <li><a href="#carnes">Carnes</a></li>
                         <li><a href="#legumes">Legumes</a></li>
                         <li><a href="#frutas">Frutas</a></li>
@@ -137,6 +162,6 @@
         </div>
     </footer>
 
-    <script src="app.js"></script>
+    <script src="app_modificado.js"></script>
 </body>
 </html>
